@@ -1,0 +1,78 @@
+openapi: 3.0.0
+info:
+  title: Bot Service API
+  description: API documentation for the Bot Service handling Telegram bot functionalities.
+  version: 1.0.0
+
+servers:
+  - url: http://localhost:5000
+    description: Local development server
+
+paths:
+  /webhook:
+    post:
+      summary: Receive and process Telegram webhook messages
+      operationId: processWebhookMessage
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                message:
+                  type: object
+                  description: Telegram message object
+      responses:
+        '200':
+          description: Successfully processed the expense message
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: success
+                  message:
+                    type: string
+                    example: "Food expense added ✅"
+        '400':
+          description: Invalid message format or missing required data
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  message:
+                    type: string
+                    example: "Invalid message format"
+        '403':
+          description: User not authorized to perform the operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  message:
+                    type: string
+                    example: "User not found"
+        '500':
+          description: Internal server error occurred
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  message:
+                    type: string
+                    example: "Internal server error"

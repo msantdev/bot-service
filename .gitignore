@@ -1,0 +1,41 @@
+# Python related
+*.pyc
+__pycache__/
+*.pyo
+*.pyd
+*.pyw
+*.pyz
+*.pyzw
+*.pyc
+
+# Virtual environments
+venv/
+env/
+.pipenv/
+pipfile.lock
+app.log
+
+# IDE specific files
+.idea/
+.vscode/
+
+# Logs and databases
+*.log
+*.sqlite
+*.db
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Ignore environment file with secrets
+.env
+
+
+
+
+# Ignore miscellaneous
+node_modules/
+*.bak
+*.tmp
+
